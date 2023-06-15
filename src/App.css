@@ -1,0 +1,27 @@
+.App {
+    display: flex;
+    justify-content: center;
+}
+
+.Navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+.header{
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.header:hover {
+    color: blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+
+h1{
+    font-size: 40px;
+}
