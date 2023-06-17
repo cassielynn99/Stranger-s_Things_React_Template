@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 
 const COHORT_NAME = '2303-FTB-ET-WEB-AM'
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-
-// async function PostRegisterUser(username, password) 
-export const PostRegisterUser = async (token, username, password) => {
+export const PostRegisterUser = async (username, password) => {
     console.log('hello');
     try {
         const response = await fetch(
-            `${BASE_URL}/register`, {
+            `${BASE_URL}/users/register`, {
             method: "POST",
             headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 user: {
-                    username: username,
-                    password: password
+                    username: `${username}`,
+                    password: `${password}`
                 }
             })
         });
         const result = await response.json();
         // You can log ▲▲▲ the result
         // here ▼▼▼ to view the json object before returning it
+        console.log(username, password);
         console.log(result);
+        localStorage.token = result.data.token;
         return result;
     } catch (err) {
         console.error(err);
@@ -40,7 +39,6 @@ export const fetchPosts = async () => {
         const data = await response.json();
         console.log('data: ', data);
         return data.data.posts;
-        //setPosts(data.data.posts);
     } catch (error) {
 
     }
